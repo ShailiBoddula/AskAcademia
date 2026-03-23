@@ -1,6 +1,6 @@
 # AskAcademia
 
-An AI-powered academic assistant chatbot for RGUKT (Rajiv Gandhi University of Knowledge Technologies) that helps students with academic queries, rules, and regulations.
+An AI-powered academic assistant chatbot for RGUKT (Rajiv Gandhi University of Knowledge Technologies,Basar) that helps students with academic queries, rules, and regulations.
 
 ## Features
 
