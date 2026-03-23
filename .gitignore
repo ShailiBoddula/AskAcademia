@@ -1,0 +1,39 @@
+# Virtual environment
+venv/
+__pycache__/
+*.pyc
+
+# Environment variables
+.env
+
+# Database files
+*.sqlite
+*.sqlite3
+
+# Vector store directories
+rgukt_db/
+rgukt2_db/
+pdf_vectorstore/
+faiss_index.faiss/
+rgukt_datasets/
+db_civil/
+db_cse/
+db_ece/
+db_eee/
+db_mech/
+db_mme/
+db_rules/
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Node modules
+node_modules/
+
+# Build files
+dist/
+build/
