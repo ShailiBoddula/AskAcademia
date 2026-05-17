@@ -26,11 +26,11 @@ def create_askacademia_agent():
     logger.info(f"Registered {len(tools)} tools: {[t.name for t in tools]}")
 
     llm = ChatGroq(
-        groq_api_key=groq_api_key,
-        model_name="llama3-8b-8192",
-        temperature=0.1,
+        model_name="llama-3.1-8b-instant",
+        groq_api_key=os.getenv("GROQ_API_KEY"),
+        temperature=0,
+        request_timeout=120,
         max_retries=5,
-        request_timeout=60.0,
     )
     logger.info("Initialized Groq LLM (mixtral-8x7b-32768)")
 
