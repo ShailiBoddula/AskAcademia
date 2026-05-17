@@ -8,8 +8,14 @@ from langchain_community.vectorstores import Chroma
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Shared embeddings instance (initialized once)
-_embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+_embeddings = None
+
+def get_embeddings():
+    global _embeddings
+    if _embeddings is None:
+        logger.info("Loading HuggingFace embeddings (first request)...")
+        _embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+    return _embeddings
 
 # Module-level retrievers for all departments (loaded once)
 DB_PATHS = {
@@ -23,13 +29,22 @@ DB_PATHS = {
 }
 
 retrievers: Dict[str, Any] = {}
-for dept, path in DB_PATHS.items():
-    if os.path.exists(path):
-        db = Chroma(persist_directory=path, embedding_function=_embeddings)
-        retrievers[dept] = db.as_retriever(search_kwargs={"k": 4})
-        logger.info(f"Loaded retriever for {dept}")
-    else:
-        logger.warning(f"Database path not found for {dept}: {path}. Skipping.")
+_retrievers_loaded = False
+
+def get_retrievers():
+    global retrievers, _retrievers_loaded
+    if not _retrievers_loaded:
+        logger.info("Loading ChromaDB retrievers (first request)...")
+        embeddings = get_embeddings()
+        for dept, path in DB_PATHS.items():
+            if os.path.exists(path):
+                db = Chroma(persist_directory=path, embedding_function=embeddings)
+                retrievers[dept] = db.as_retriever(search_kwargs={"k": 4})
+                logger.info(f"Loaded retriever for {dept}")
+            else:
+                logger.warning(f"DB not found for {dept}: {path}")
+        _retrievers_loaded = True
+    return retrievers
 
 
 def determine_department(query: str) -> str:
@@ -86,7 +101,7 @@ def search_rgukt_documents(query: str) -> Dict[str, Any]:
     
     try:
         department = determine_department(query)
-        retriever = retrievers.get(department, retrievers.get("RULES"))
+        retriever = get_retrievers().get(department, get_retrievers().get("RULES"))
         
         if retriever is None:
             logger.error(f"No retriever available for department: {department}")

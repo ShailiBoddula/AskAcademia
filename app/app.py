@@ -5,7 +5,7 @@ from pydantic import BaseModel
 from typing import List, Dict, Any
 import uvicorn
 
-from app.agent.setup import askacademia_agent
+from app.agent.setup import get_agent
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -75,7 +75,7 @@ async def chat(request: ChatRequest):
     logger.info(f"Incoming request - Session: {request.session_id}")
 
     try:
-        result = await askacademia_agent.ainvoke({
+        result = await get_agent().ainvoke({
             "input": request.message
         })
 

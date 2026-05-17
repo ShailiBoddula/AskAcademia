@@ -2,7 +2,6 @@ import os
 import logging
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
-from langchain.memory import ConversationBufferWindowMemory
 from langchain.agents import create_tool_calling_agent, AgentExecutor
 
 from app.tools.rag_tool import search_rgukt_documents
@@ -39,17 +38,9 @@ def create_askacademia_agent():
     agent = create_tool_calling_agent(llm, tools, prompt)
     logger.info("Created tool-calling agent")
 
-    memory = ConversationBufferWindowMemory(
-        memory_key="chat_history",
-        k=5,
-        return_messages=True
-    )
-    logger.info("Initialized ConversationBufferWindowMemory (k=5)")
-
     askacademia_agent = AgentExecutor(
         agent=agent,
         tools=tools,
-        memory=memory,
         verbose=True,
         handle_parsing_errors=True,
         return_intermediate_steps=True
@@ -59,8 +50,16 @@ def create_askacademia_agent():
     return askacademia_agent
 
 
-askacademia_agent = create_askacademia_agent()
+_agent_instance = None
+
+def get_agent():
+    global _agent_instance
+    if _agent_instance is None:
+        logger.info("Initializing AskAcademia agent (first request)...")
+        _agent_instance = create_askacademia_agent()
+    return _agent_instance
+
 
 if __name__ == "__main__":
     print("AskAcademia agent initialized successfully.")
-    print(f"Available tools: {[t.name for t in askacademia_agent.tools]}")
+    print(f"Available tools: {[t.name for t in get_agent().tools]}")
