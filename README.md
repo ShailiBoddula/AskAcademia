@@ -1,108 +1,208 @@
-# AskAcademia
+# AskAcademia 🎓
 
-An AI-powered academic assistant chatbot for RGUKT (Rajiv Gandhi University of Knowledge Technologies) that helps students with academic queries, rules, and regulations.
+AskAcademia is an AI-powered academic assistant built for RGUKT students using LangChain, FastAPI, React, ChromaDB, and Groq LLMs.
 
-## Features
+It combines Retrieval-Augmented Generation (RAG), live notice scraping, and multi-tool AI agents to help students access academic regulations, department syllabus information, and the latest RGUKT notices through a conversational interface.
 
-- AI-powered chatbot for academic queries
-- Support for multiple engineering departments (Civil, CSE, ECE, EEE, Mechanical, MME)
-- Academic rules and regulations information
-- Interactive chat interface
-- Dark/Light theme support
+## ✨ Features
 
-## Tech Stack
+* 🤖 Multi-tool AI Agent using LangChain
+* 📚 Department-wise RAG system
+* 🧠 Conversational memory support
+* 🔍 Semantic search using ChromaDB
+* 📄 Source citations with page references
+* 🌐 Live RGUKT notice scraping
+* 📰 Structured notice cards with PDF download links
+* ⚡ FastAPI backend with async APIs
+* 🎨 Modern React + Tailwind frontend
+* 🔗 Tool routing using Groq LLMs
 
-### Backend
-- Python
-- FastAPI
-- ChromaDB for vector storage
-- HuggingFace embeddings
+## 🏗️ System Architecture
+
+```
+User
+  ↓
+React Frontend
+  ↓
+FastAPI Backend
+  ↓
+LangChain Agent
+   ↙               ↘
+RAG Tool       Notice Tool
+   ↓               ↓
+ChromaDB      RGUKT Notice Scraper
+```
+
+## 🛠️ Tech Stack
 
 ### Frontend
-- React
-- Vite
-- Tailwind CSS
+* React 
+* Vite 
+* Tailwind CSS 
 
-## Project Structure
+### Backend
+* FastAPI 
+* LangChain 
+* Groq API 
+* ChromaDB 
+* HuggingFace Embeddings 
+
+### AI / RAG
+* Llama 3 (Groq) 
+* all-MiniLM-L6-v2 embeddings 
+* Chroma Vector Database 
+
+### Web Scraping
+* BeautifulSoup 
+* Requests 
+
+## 📂 Project Structure
 
 ```
-Rgukt-bot/
-├── app/                    # Backend application
-│   ├── app.py             # FastAPI app
-│   ├── main.py           # Main application logic
-│   ├── models.py         # Data models
-│   ├── schemas.py        # Pydantic schemas
-│   ├── services.py       # Business logic
-│   └── utils.py          # Utilities
-├── frontend/              # React frontend
-│   ├── src/
-│   │   ├── components/   # UI components
-│   │   ├── pages/        # Page components
-│   │   ├── services/     # API services
-│   │   └── utils/        # Utilities
-│   └── package.json
-├── server.py              # Server entry point
-├── start_server.py       # Server startup script
-├── requirements.txt      # Python dependencies
-└── README.md
+AskAcademia/
+│
+├── app/
+│   ├── agent/
+│   ├── tools/
+│   ├── utils/
+│   ├── rgukt_datasets/
+│   └── app.py
+│
+├── frontend/
+│
+├── requirements.txt
+├── README.md
+└── start_server.py
 ```
 
-## Setup
+## 🚀 Setup Instructions
 
-### Prerequisites
-- Python 3.8+
-- Node.js 16+
-- npm or yarn
+### 1. Clone Repository
 
-### Backend Setup
+```bash
+git clone https://github.com/ShailiBoddula/AskAcademia.git
+cd AskAcademia
+```
 
-1. Create and activate virtual environment:
+### 2. Backend Setup
+
+Create virtual environment:
+
 ```bash
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-2. Install dependencies:
+Activate virtual environment:
+**Windows**
+
+```bash
+venv\Scripts\activate
+```
+
+**Linux / Mac**
+
+```bash
+source venv/bin/activate
+```
+
+Install dependencies:
+
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Start the backend server:
+Create `.env` file:
+
 ```bash
-python server.py
+GROQ_API_KEY=your_groq_api_key
 ```
 
-### Frontend Setup
+Run backend:
 
-1. Navigate to frontend directory:
+```bash
+uvicorn app.app:app --reload
+```
+
+Backend runs at:
+
+```bash
+http://127.0.0.1:8000
+```
+
+### 3. Frontend Setup
+
+Go to frontend folder:
+
 ```bash
 cd frontend
 ```
 
-2. Install dependencies:
+Install dependencies:
+
 ```bash
 npm install
 ```
 
-3. Start the development server:
+Run frontend:
+
 ```bash
 npm run dev
 ```
 
-## Environment Variables
+Frontend runs at:
 
-Create a `.env` file in the root directory with the following:
-- `GROQ_API_KEY` - Groq API key for LLM
-- `HF_TOKEN` - HuggingFace token
+```bash
+http://localhost:5173
+```
 
-## Deployment
+## 🧠 Example Queries
 
-### Backend
-The backend can be deployed on any Python-supported platform (Render, Railway, Fly.io, etc.)
+* What is the attendance policy? 
+* Show latest RGUKT notices 
+* Explain thermodynamics syllabus for mechanical engineering 
+* What happens if attendance is below minimum? 
+* Show scholarship notices 
 
-### Frontend
-The frontend can be deployed on Vercel, Netlify, or any static hosting service.
+## 📌 Key Functionalities
 
-## License
+### 🔹 RAG Search
+Searches department-wise academic documents using semantic retrieval.
 
-MIT License
+### 🔹 Conversational Memory
+Maintains context across follow-up questions.
+
+### 🔹 Notice Scraping
+Fetches and structures latest RGUKT notices dynamically.
+
+### 🔹 Structured Notice Rendering
+Displays notices as UI cards with downloadable PDFs.
+
+## 📸 Screenshots
+
+Add screenshots here later.
+
+**Suggested screenshots:**
+- Attendance policy response 
+- Notice cards UI 
+- PDF download button 
+- Memory follow-up query 
+- Source citation rendering 
+
+## 🔮 Future Improvements
+
+* User authentication 
+* Deployment on Vercel + Render 
+* Voice input support 
+* Multi-language support 
+* Student personalization 
+* Feedback analytics dashboard 
+
+## 👩‍💻 Author
+
+**Shaili Boddula**
+
+Built as an AI-powered academic assistant project focused on improving student access to university information through conversational AI and RAG systems.
+
+---
+
+⭐ If you found this project useful, consider giving the repository a star!
