@@ -75,7 +75,8 @@ async def chat(request: ChatRequest):
 
     try:
         result = await get_agent().ainvoke({
-            "input": request.message
+            "input": request.message,
+            "chat_history": []
         })
 
         answer = result.get("output", "Sorry, I could not process your request.")
