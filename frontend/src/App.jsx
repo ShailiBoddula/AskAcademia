@@ -21,7 +21,7 @@ function App() {
     setIsChatting(true); // Set chatting mode to true when first message is sent
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/chat", {
+      const response = await fetch("https://askacademia.onrender.com/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -128,7 +128,7 @@ function App() {
       ]);
 
       // Make API call to get response
-      const response = await fetch("http://127.0.0.1:8000/chat", {
+      const response = await fetch("https://askacademia.onrender.com/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
