@@ -201,17 +201,11 @@ Displays notices as UI cards with downloadable PDFs.
 
 ![PDF Downloads](screenshots/4.png)
 
-**Suggested screenshots:**
-- Attendance policy response 
-- Notice cards UI 
-- PDF download button 
-- Memory follow-up query 
-- Source citation rendering 
+ 
 
 ## 🔮 Future Improvements
 
-* User authentication 
-* Deployment on Vercel + Render 
+* User authentication  
 * Voice input support 
 * Multi-language support 
 * Student personalization 
