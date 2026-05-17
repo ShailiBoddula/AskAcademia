@@ -178,8 +178,28 @@ Fetches and structures latest RGUKT notices dynamically.
 Displays notices as UI cards with downloadable PDFs.
 
 ## 📸 Screenshots
+ 
+## Home Interface
 
-Add screenshots here later.
+![Home Interface](screenshots/1.png)
+
+---
+
+## Attendance Policy with Conversational Memory
+
+![Attendance Policy](screenshots/2.png)
+
+---
+
+## Latest Examination Notices
+
+![Latest Notices](screenshots/3.png)
+
+---
+
+## Structured RGUKT Circulars with PDF Downloads
+
+![PDF Downloads](screenshots/4.png)
 
 **Suggested screenshots:**
 - Attendance policy response 
