@@ -326,7 +326,7 @@ function App() {
                 {chat.type === "bot" && (
                   <div className="w-7 h-7 md:w-10 md:h-10 p-1 rounded-full bg-white flex items-center justify-center mr-1.5 sm:mr-2 md:mr-3 flex-shrink-0 border border-gray-200">
                     <img
-                      src="{icon}"
+                      src={icon}
                       alt="AskRGUKT"
                       className="w-5 h-5 md:w-8 md:h-8 object-contain"
                     />
