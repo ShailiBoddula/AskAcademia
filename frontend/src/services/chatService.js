@@ -3,9 +3,9 @@ import api from './api';
 export const chatService = {
     async sendMessage(message, chatHistory = []) {
         try {
-            const response = await api.post('/api/chat', {
+            const response = await api.post('/chat', {
                 text: message,
-                chat_history: chatHistory
+                session_id: "user_" + Date.now()
             });
             return response.data;
         } catch (error) {

@@ -174,11 +174,11 @@ Maintains context across follow-up questions.
 ### 🔹 Notice Scraping
 Fetches and structures latest RGUKT notices dynamically.
 
-### 🔹 Structured Notice Rendering
+### 🔹 Structured Notice Renderinggit 
 Displays notices as UI cards with downloadable PDFs.
 
-## 📸 Screenshots
- 
+# 📸 Screenshots
+
 ## Home Interface
 
 ![Home Interface](screenshots/1.png)
@@ -201,11 +201,17 @@ Displays notices as UI cards with downloadable PDFs.
 
 ![PDF Downloads](screenshots/4.png)
 
- 
+**Suggested screenshots:**
+- Attendance policy response 
+- Notice cards UI 
+- PDF download button 
+- Memory follow-up query 
+- Source citation rendering 
 
 ## 🔮 Future Improvements
 
-* User authentication  
+* User authentication 
+* Deployment on Vercel + Render 
 * Voice input support 
 * Multi-language support 
 * Student personalization 

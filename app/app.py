@@ -112,7 +112,7 @@ async def chat(request: ChatRequest):
         )
 
     except Exception as e:
-        logger.error(f"Agent error in session {request.session_id}: {str(e)}")
+        logger.exception(f"FULL ERROR: {str(e)}")
         raise HTTPException(
             status_code=500,
             detail="An error occurred while processing your request. Please try again."

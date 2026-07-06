@@ -25,6 +25,7 @@ def create_askacademia_agent():
     tools = [search_rgukt_documents, fetch_rgukt_notices]
     logger.info(f"Registered {len(tools)} tools: {[t.name for t in tools]}")
 
+    logger.info(f"GROQ_API_KEY exists: {bool(os.getenv('GROQ_API_KEY'))}")
     llm = ChatGroq(
         model_name="llama-3.1-8b-instant",
         groq_api_key=os.getenv("GROQ_API_KEY"),
