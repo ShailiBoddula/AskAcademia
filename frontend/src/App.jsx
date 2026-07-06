@@ -21,7 +21,7 @@ function App() {
     setIsChatting(true); // Set chatting mode to true when first message is sent
 
     try {
-      const response = await fetch("https://askacademia.onrender.com/chat", {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/chat, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
