@@ -7,6 +7,8 @@ import {
   FaCreditCard,
 } from "react-icons/fa";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://shyliii07-askacademia.hf.space';
+
 function App() {
   const [message, setMessage] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
@@ -21,7 +23,7 @@ function App() {
     setIsChatting(true); // Set chatting mode to true when first message is sent
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/chat, {
+      const response = await fetch(`${API_BASE_URL}/chat`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -128,7 +130,7 @@ function App() {
       ]);
 
       // Make API call to get response
-      const response = await fetch("https://askacademia.onrender.com/chat", {
+      const response = await fetch(`${API_BASE_URL}/chat`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
