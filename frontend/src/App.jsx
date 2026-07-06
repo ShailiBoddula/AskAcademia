@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import icon from "./assets/icon.png";
 import darkLogo from "../src/assets/darklogo.png"; // Only need dark logo now
 import {
   FaGraduationCap,
@@ -55,14 +56,7 @@ function App() {
   };
 
   const cards = [
-    {
-      icon: <FaAward className="text-[#98E9AB]" />,
-      title: "Latest",
-      subtitle: "Scholarship Notices",
-      description: "and Financial Aid Updates",
-      borderColor: "border-green-100",
-      bgColor: "bg-green-50",
-    },
+   
     {
       icon: <FaGraduationCap className="text-[#8BB9FE]" />,
       title: "Latest",
@@ -92,7 +86,6 @@ function App() {
   const commonQuestions = [
     "What is the attendance policy?",
     "Show latest RGUKT notices",
-    "What scholarship options are available?",
     "Tell me about E1 branch allocation",
   ];
 
@@ -108,7 +101,7 @@ function App() {
 
   // Define card questions
   const cardQuestions = {
-    scholarship: "Show latest scholarship notices",
+    
     examination: "Show latest examination notices",
     recruitment: "Show latest campus recruitment notices",
     circulars: "Show latest RGUKT circulars",
